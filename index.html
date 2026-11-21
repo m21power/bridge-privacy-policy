@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy – BRIDGE</title>
+<meta name="description" content="How BRIDGE, the VS Code extension and Chrome companion extension, handles your data when connecting VS Code to Claude, ChatGPT and Gemini.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="logo.png">
+<script>try{var t=localStorage.getItem("bridge-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<style>
+:root{--bg:#fff;--alt:#f5f5f7;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--link:#0066cc;--nav:rgba(255,255,255,.8);--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif}
+:root[data-theme=dark]{--bg:#000;--alt:#161617;--ink:#f5f5f7;--muted:#a1a1a6;--line:#424245;--link:#2997ff;--nav:rgba(22,22,23,.8)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#000;--alt:#161617;--ink:#f5f5f7;--muted:#a1a1a6;--line:#424245;--link:#2997ff;--nav:rgba(22,22,23,.8)}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.47 var(--font);letter-spacing:-.022em;-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;z-index:100}.skip:focus{left:8px}
+header{position:sticky;top:0;z-index:50;height:52px;background:var(--nav);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+header .in{max-width:1024px;height:100%;margin:auto;padding:0 22px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);letter-spacing:.02em}.brand:hover{text-decoration:none}
+.brand img{width:24px;height:24px;object-fit:contain;border-radius:6px}
+header nav{margin-left:auto;display:flex;gap:28px;font-size:13px}header nav a{color:var(--muted)}header nav a:hover{color:var(--ink);text-decoration:none}
+.tog{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px;width:32px;height:32px;border-radius:50%}.tog:hover{color:var(--ink);background:var(--alt)}
+.hero{text-align:center;padding:96px 22px 72px;background:var(--alt)}
+.hero img.logo{width:84px;height:84px;object-fit:contain;border-radius:20px;margin-bottom:24px}
+h1{font-size:clamp(40px,7vw,80px);line-height:1.05;font-weight:600;letter-spacing:-.04em;margin:0 auto 20px;max-width:12em}
+.lead{font-size:clamp(19px,2.4vw,26px);line-height:1.3;color:var(--muted);max-width:30em;margin:0 auto 28px;letter-spacing:-.02em}
+.meta{font-size:14px;color:var(--muted)}.meta b{color:var(--ink);font-weight:500}
+.diagram{max-width:760px;margin:64px auto 0;padding:0 8px}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram .box{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+.diagram .t{fill:var(--ink);font:600 14px var(--font)}.diagram .s{fill:var(--muted);font:12px var(--font)}
+.flow{stroke:var(--muted);stroke-width:2;fill:none;stroke-dasharray:4 6;animation:dash 1.8s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.wrap{max-width:1024px;margin:auto;padding:24px 22px 40px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:64px}
+aside{position:sticky;top:84px;align-self:start;max-height:calc(100vh - 110px);overflow:auto}
+aside p.h{font-size:12px;font-weight:600;color:var(--muted);margin:0 0 10px}
+aside ol{list-style:none;margin:0;padding:0}
+aside a{display:block;padding:4px 0;font-size:14px;color:var(--muted)}aside a:hover{color:var(--ink);text-decoration:none}aside a.on{color:var(--ink);font-weight:600}
+aside details{display:none}
+main{max-width:700px;min-width:0}
+section{padding:48px 0 12px}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:600;letter-spacing:-.03em;margin:0 0 18px}
+h3{font-size:21px;font-weight:600;letter-spacing:-.02em;margin:30px 0 6px}
+h4{font-size:14px;font-weight:600;color:var(--muted);margin:18px 0 2px}
+p{margin:0 0 16px}ul{padding-left:20px;margin:0 0 16px}li{margin:8px 0}li::marker{color:var(--muted)}
+code{font:.88em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--alt);padding:2px 6px;border-radius:5px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.fact{background:var(--alt);border-radius:18px;padding:22px}.fact b{display:block;font-size:17px;margin-bottom:6px}.fact span{font-size:15px;color:var(--muted);line-height:1.4}
+.prov{background:var(--alt);border-radius:22px;padding:28px;margin:16px 0}
+.prov h3{margin:0 0 2px;font-size:26px}.prov .by{color:var(--muted);font-size:15px;margin:0 0 6px}
+.tw{overflow-x:auto;margin:20px 0;border-radius:18px;background:var(--alt)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4}
+th{font-size:13px;font-weight:600;color:var(--muted)}tr:last-child td{border:0}
+.note{background:var(--alt);border-radius:14px;padding:16px 20px;font-size:15px;color:var(--muted);margin:20px 0}
+.note b{color:var(--ink)}
+footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--muted);font-size:12px;line-height:1.5}
+.rise{animation:rise .9s cubic-bezier(.16,1,.3,1) both}@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@media(max-width:860px){.wrap{grid-template-columns:1fr;gap:0}aside{position:static;max-height:none}aside>p,aside>ol{display:none}aside details{display:block;background:var(--alt);border-radius:14px;padding:14px 18px}aside summary{cursor:pointer;font-weight:600;font-size:15px}aside details ol{margin-top:10px}.facts{grid-template-columns:1fr}header nav{display:none}.tog{margin-left:auto}}
+@media(max-width:520px){body{font-size:16px}.hero{padding-top:64px}.prov{padding:22px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+@media print{header,aside,.tog{display:none}.wrap{display:block}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header><div class="in">
+<a class="brand" href="#top" aria-label="BRIDGE home"><img src="logo.png" alt="" onerror="this.style.display='none'">BRIDGE</a>
+<nav aria-label="Primary"><a href="#overview">Summary</a><a href="#providers">AI providers</a><a href="#control">Your control</a><a href="#contact">Contact</a></nav>
+<button class="tog" id="tog" aria-label="Switch between light and dark mode" title="Toggle theme">◐</button>
+</div></header>
+
+<div class="hero" id="top">
+<div class="rise">
+<img class="logo" src="logo.png" alt="BRIDGE logo" onerror="this.style.display='none'">
+<h1>Privacy Policy</h1>
+<p class="lead">BRIDGE connects VS Code to the AI chats you already use in your browser. Here is what it touches, where your data goes, and what you control.</p>
+<p class="meta">Effective <b>November 21, 2026</b> &nbsp;·&nbsp; Last updated <b>November 21, 2026</b></p>
+</div>
+<div class="diagram rise" style="animation-delay:.15s">
+<svg viewBox="0 0 640 210" role="img" aria-label="VS Code connects through a local WebSocket at 127.0.0.1:43127 to the Chrome extension, which uses your signed-in session on Claude, ChatGPT or Gemini.">
+<rect class="box" x="10" y="30" width="170" height="70" rx="18"/><text class="t" x="95" y="62" text-anchor="middle">VS Code</text><text class="s" x="95" y="80" text-anchor="middle">BRIDGE extension</text>
+<rect class="box" x="235" y="30" width="170" height="70" rx="18"/><text class="t" x="320" y="62" text-anchor="middle">Chrome</text><text class="s" x="320" y="80" text-anchor="middle">BRIDGE companion</text>
+<rect class="box" x="460" y="30" width="170" height="70" rx="18"/><text class="t" x="545" y="62" text-anchor="middle">Claude · ChatGPT · Gemini</text><text class="s" x="545" y="80" text-anchor="middle">your signed-in session</text>
+<path class="flow" d="M184 65H231"/><path class="flow" d="M409 65H456"/>
+<text class="s" x="207" y="130" text-anchor="middle">Local only</text>
+<text class="s" x="207" y="146" text-anchor="middle">127.0.0.1:43127</text>
+<text class="s" x="432" y="130" text-anchor="middle">Your browser session</text>
+<text class="s" x="432" y="146" text-anchor="middle">to the provider</text>
+<text class="s" x="320" y="192" text-anchor="middle">BRIDGE has no server of its own in this path.</text>
+</svg>
+</div>
+</div>
+
+<div class="wrap">
+<aside aria-label="Table of contents">
+<p class="h">On this page</p>
+<ol id="toc">
+<li><a href="#overview">Summary</a></li><li><a href="#how">How BRIDGE works</a></li><li><a href="#data">Data involved</a></li><li><a href="#sessions">Sessions and sign-in</a></li><li><a href="#providers">AI providers</a></li><li><a href="#local">Local communication</a></li><li><a href="#permissions">Chrome permissions</a></li><li><a href="#retention">Storage and retention</a></li><li><a href="#security">Security</a></li><li><a href="#control">Your control</a></li><li><a href="#thirdparty">Third parties</a></li><li><a href="#sale">Sale and advertising</a></li><li><a href="#children">Children</a></li><li><a href="#changes">Changes</a></li><li><a href="#contact">Contact</a></li>
+</ol>
+<details><summary>On this page</summary><ol id="toc2"></ol></details>
+</aside>
+
+<main id="content">
+<section id="overview"><h2>Summary</h2>
+<p>BRIDGE is a VS Code extension and a Chrome (Manifest V3) companion extension. Together they let you use Claude, ChatGPT and Google Gemini from VS Code, using accounts you are already signed in to in Chrome. No API keys are needed.</p>
+<div class="facts">
+<div class="fact"><b>No BRIDGE backend</b><span>BRIDGE does not run its own server to process your conversations.</span></div>
+<div class="fact"><b>Local connection</b><span>VS Code and Chrome talk on your computer at <code>127.0.0.1:43127</code>.</span></div>
+<div class="fact"><b>Providers process AI</b><span>Your content goes to the provider you choose, under its own policies.</span></div>
+</div>
+</section>
+
+<section id="how"><h2>How BRIDGE works</h2>
+<p>You write a prompt in VS Code. The VS Code extension sends it over a local WebSocket to the Chrome extension. The Chrome extension then uses your open, signed-in tab for the chosen provider (Claude.ai, ChatGPT or Gemini) and passes the reply back to VS Code the same way.</p>
+<p>Because it works through your browser session, the provider sees the activity as coming from your account in your browser. BRIDGE does not ask for, and does not need, an API key.</p>
+</section>
+
+<section id="data"><h2>Data involved</h2>
+<p>What BRIDGE handles, and where it goes.</p>
+<div class="tw"><table>
+<thead><tr><th>Information</th><th>How BRIDGE handles it</th><th>Goes to</th></tr></thead>
+<tbody>
+<tr><td>Prompts and messages</td><td>Passed between VS Code and Chrome so they reach the provider's page.</td><td>The provider you select</td></tr>
+<tr><td>Files and code you include</td><td>Read in VS Code when you choose to include them, then relayed with your prompt.</td><td>The provider you select</td></tr>
+<tr><td>AI responses</td><td>Read from the provider's page and relayed to VS Code.</td><td>Shown in VS Code</td></tr>
+<tr><td>Page content on supported sites</td><td>The Chrome extension runs only on Claude.ai, ChatGPT and Gemini pages, to send your prompts, read replies and show its on-page controls. It does not run on other websites.</td><td>Not sent elsewhere by BRIDGE</td></tr>
+<tr><td>Settings</td><td>The Chrome extension keeps the settings it needs to work in Chrome's extension storage.</td><td>Not transmitted by BRIDGE</td></tr>
+<tr><td>Logs and diagnostics</td><td>BRIDGE keeps no logs of your prompts or replies. It only shows connection status.</td><td>Nowhere</td></tr>
+</tbody></table></div>
+<p>BRIDGE does not include analytics, telemetry or crash reporting, and it sends nothing to the developer.</p>
+</section>
+
+<section id="sessions"><h2>Sessions and sign-in</h2>
+<p>BRIDGE relies on sessions you have already created by signing in to each provider in Chrome. Sign-in happens on the provider's own website, not in BRIDGE.</p>
+<ul>
+<li><b>Passwords.</b> BRIDGE does not ask for or collect your provider passwords.</li>
+<li><b>Cookies and tokens.</b> BRIDGE does not read, copy, store or transmit your session cookies or tokens. Your session stays in Chrome.</li>
+<li><b>Your plan.</b> Usage counts against your own account, and the provider's usage rules apply to you. Please check that using a provider through a browser extension fits its terms.</li>
+</ul>
+</section>
+
+<section id="providers"><h2>AI providers</h2>
+<p>When you pick a provider, that provider processes your content. BRIDGE is not affiliated with, endorsed by, or sponsored by Anthropic, OpenAI or Google.</p>
+
+<article class="prov"><h3>Claude</h3><p class="by">Anthropic</p>
+<h4>What BRIDGE does</h4><p>Relays your prompts and files into your signed-in Claude.ai tab and reads Claude's replies back.</p>
+<h4>What Anthropic handles</h4><p>Anthropic receives and processes your conversation under your account. Retention, training settings and deletion are set by Anthropic and your account settings.</p>
+<p><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic Privacy Policy</a></p></article>
+
+<article class="prov"><h3>ChatGPT</h3><p class="by">OpenAI</p>
+<h4>What BRIDGE does</h4><p>Relays your prompts and files into your signed-in ChatGPT tab and reads ChatGPT's replies back.</p>
+<h4>What OpenAI handles</h4><p>OpenAI receives and processes your conversation under your account. Chat history, data controls and retention are managed by OpenAI and your account settings.</p>
+<p><a href="https://openai.com/policies/privacy-policy/" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a></p></article>
+
+<article class="prov"><h3>Gemini</h3><p class="by">Google</p>
+<h4>What BRIDGE does</h4><p>Relays your prompts and files into your signed-in Gemini tab and reads Gemini's replies back.</p>
+<h4>What Google handles</h4><p>Google receives and processes your conversation under your Google Account. Activity settings, retention and deletion are managed by Google.</p>
+<p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></p></article>
+
+<p>Each provider may store conversations, link them to your account, and use them according to its own policy and your settings. BRIDGE does not control this.</p>
+</section>
+
+<section id="local"><h2>Local communication</h2>
+<p>The two extensions connect through a WebSocket on the loopback address <code>127.0.0.1</code>, port <code>43127</code>. Loopback traffic stays on your computer and is not sent over the internet by BRIDGE.</p>
+<ul>
+<li>A pairing token links your VS Code and Chrome extensions, so the connection is not open to anything that happens to reach the port.</li>
+</ul>
+</section>
+
+<section id="permissions"><h2>Chrome permissions</h2>
+<p>The Chrome extension asks for the following, and uses each one only for BRIDGE's own features.</p>
+<ul>
+<li><b>Site access.</b> Claude.ai, ChatGPT (chatgpt.com and chat.openai.com), Gemini, and <code>127.0.0.1:43127</code> for the local connection. Nothing else.</li>
+<li><b>tabs.</b> To find and work with your open provider tabs.</li>
+<li><b>scripting.</b> To run BRIDGE's scripts on those provider pages.</li>
+<li><b>storage.</b> To keep the extension's own settings.</li>
+<li><b>alarms.</b> To run timed background tasks.</li>
+</ul>
+<p>On the provider pages, BRIDGE's scripts send your prompts, read replies, handle copy actions, and show an on-page overlay and save prompt.</p>
+</section>
+
+<section id="retention"><h2>Storage and retention</h2>
+<h3>BRIDGE</h3>
+<p>BRIDGE does not run a server and does not keep copies of your conversations on infrastructure it operates. Inside VS Code, BRIDGE holds your conversation only temporarily on your computer. It is cleared when you close VS Code and does not come back when you reopen it.</p>
+<h3>AI providers</h3>
+<p>Even after BRIDGE clears its temporary data, your conversations may still exist with the provider, which stores and retains them under its policy and your settings. Deleting something in BRIDGE, if supported, may not delete it from the provider.</p>
+</section>
+
+<section id="security"><h2>Security</h2>
+<ul>
+<li>Local traffic uses the loopback interface only.</li>
+<li>Connections to providers use their websites' HTTPS, handled by your browser.</li>
+<li>The Chrome extension uses Manifest V3 and is limited to the sites listed above.</li>
+<li>A pairing token links VS Code and Chrome.</li>
+</ul>
+<p>No software is perfectly secure. BRIDGE cannot guarantee protection against malware on your device or issues at a provider. Keep your system, browser and extensions up to date.</p>
+</section>
+
+<section id="control"><h2>Your control</h2>
+<ul>
+<li><b>Choose what you send.</b> Only the prompts and files you choose to include are relayed.</li>
+<li><b>Choose the provider.</b> Pick or switch providers for each task.</li>
+<li><b>Disconnect.</b> Disable or uninstall either extension to stop BRIDGE immediately.</li>
+<li><b>Sign out.</b> Signing out of a provider in Chrome ends BRIDGE's access to that account.</li>
+<li><b>Manage history.</b> Review and delete conversations in each provider's account settings.</li>
+<li><b>Local data.</b> BRIDGE's temporary data in VS Code clears when you close it. You can clear the Chrome extension's data in Chrome's extension settings.</li>
+</ul>
+</section>
+
+<section id="thirdparty"><h2>Third parties</h2>
+<p>BRIDGE works with Anthropic (Claude), OpenAI (ChatGPT) and Google (Gemini). Their handling of your data is governed by their own terms and privacy policies, linked above. Chrome and VS Code are separate products with their own policies. BRIDGE does not contact any other service.</p>
+</section>
+
+<section id="sale"><h2>Sale and advertising</h2>
+<p>BRIDGE does not sell your personal data and does not use it for advertising.</p>
+</section>
+
+<section id="children"><h2>Children</h2>
+<p>BRIDGE is built for developers and is not directed at children under 13, or under the minimum age in your region. We do not knowingly collect personal information from children. The AI providers have their own age requirements, which apply when you use their services.</p>
+</section>
+
+<section id="changes"><h2>Changes to this policy</h2>
+<p>If BRIDGE's behavior or this policy changes, we will update this page and the date at the top.</p>
+</section>
+
+<section id="contact"><h2>Contact</h2>
+<p>Questions about this policy? Email <a href="mailto:mesaylema21@gmail.com">mesaylema21@gmail.com</a>.</p>
+</section>
+</main>
+</div>
+
+<footer>© <span id="yr"></span> BRIDGE. Not affiliated with Anthropic, OpenAI, Google or Microsoft.<br>Claude, ChatGPT and Gemini are trademarks of their respective owners.</footer>
+
+<script>
+(function(){
+var d=document,r=d.documentElement;
+d.getElementById("yr").textContent=new Date().getFullYear();
+function cur(){return r.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light")}
+d.getElementById("tog").onclick=function(){var n=cur()==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem("bridge-theme",n)}catch(e){}};
+d.getElementById("toc2").innerHTML=d.getElementById("toc").innerHTML;
+var links=d.querySelectorAll("#toc a");
+if("IntersectionObserver" in window){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)links.forEach(function(l){l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id)})})},{rootMargin:"-20% 0px -70% 0px"});
+d.querySelectorAll("main section").forEach(function(s){io.observe(s)});}
+d.querySelectorAll("#toc2 a").forEach(function(a){a.addEventListener("click",function(){d.querySelector("aside details").open=false})});
+})();
+</script>
+</body>
+</html>
