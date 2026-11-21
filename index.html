@@ -128,7 +128,8 @@ footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--mut
 <tr><td>Files and code you include</td><td>Read in VS Code when you choose to include them, then relayed with your prompt.</td><td>The provider you select</td></tr>
 <tr><td>AI responses</td><td>Read from the provider's page and relayed to VS Code.</td><td>Shown in VS Code</td></tr>
 <tr><td>Page content on supported sites</td><td>The Chrome extension runs only on Claude.ai, ChatGPT and Gemini pages, to send your prompts, read replies and show its on-page controls. It does not run on other websites.</td><td>Not sent elsewhere by BRIDGE</td></tr>
-<tr><td>Settings</td><td>The Chrome extension keeps the settings it needs to work in Chrome's extension storage.</td><td>Not transmitted by BRIDGE</td></tr>
+<tr><td>Text you copy on provider pages</td><td>BRIDGE detects copy actions on supported pages, such as Ctrl+C or a Copy button, and reads the copied text to offer its save prompt. The text is held temporarily in Chrome's session storage, which Chrome clears when the browser closes.</td><td>Stays on your computer. Not sent to the developer.</td></tr>
+<tr><td>Settings and status</td><td>The Chrome extension keeps these in Chrome's extension storage: its pairing token, whether it is switched on, your selected provider, which provider tabs it is using, and the status of your last transfer. The status contains no prompt or reply content.</td><td>Not transmitted by BRIDGE</td></tr>
 <tr><td>Logs and diagnostics</td><td>BRIDGE keeps no logs of your prompts or replies. It only shows connection status.</td><td>Nowhere</td></tr>
 </tbody></table></div>
 <p>BRIDGE does not include analytics, telemetry or crash reporting, and it sends nothing to the developer.</p>
@@ -175,12 +176,12 @@ footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--mut
 <p>The Chrome extension asks for the following, and uses each one only for BRIDGE's own features.</p>
 <ul>
 <li><b>Site access.</b> Claude.ai, ChatGPT (chatgpt.com and chat.openai.com), Gemini, and <code>127.0.0.1:43127</code> for the local connection. Nothing else.</li>
-<li><b>tabs.</b> To find and work with your open provider tabs.</li>
+<li><b>tabs.</b> To find your open provider tabs and read their web addresses, so BRIDGE knows which provider a tab is and whether you are signed in.</li>
 <li><b>scripting.</b> To run BRIDGE's scripts on those provider pages.</li>
-<li><b>storage.</b> To keep the extension's own settings.</li>
-<li><b>alarms.</b> To run timed background tasks.</li>
+<li><b>storage.</b> To keep the extension's own settings, and to hold copied text temporarily for the save prompt.</li>
+<li><b>alarms.</b> To keep the connection to VS Code alive in the background.</li>
 </ul>
-<p>On the provider pages, BRIDGE's scripts send your prompts, read replies, handle copy actions, and show an on-page overlay and save prompt.</p>
+<p>On the provider pages, BRIDGE's scripts send your prompts, read replies, detect when you copy text, and show an on-page overlay and save prompt. To catch copy buttons on those sites, BRIDGE also wraps the page's clipboard-write function so it can see what was copied. This applies only to the supported provider pages.</p>
 </section>
 
 <section id="retention"><h2>Storage and retention</h2>
