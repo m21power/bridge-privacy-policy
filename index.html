@@ -81,13 +81,13 @@ footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--mut
 <p class="meta">Effective <b>November 21, 2026</b> &nbsp;·&nbsp; Last updated <b>November 21, 2026</b></p>
 </div>
 <div class="diagram rise" style="animation-delay:.15s">
-<svg viewBox="0 0 640 210" role="img" aria-label="VS Code connects through a local WebSocket at 127.0.0.1:43127 to the Chrome extension, which uses your signed-in session on Claude, ChatGPT or Gemini.">
+<svg viewBox="0 0 640 210" role="img" aria-label="VS Code connects through a local connection on your computer to the Chrome extension, which uses your signed-in session on Claude, ChatGPT or Gemini.">
 <rect class="box" x="10" y="30" width="170" height="70" rx="18"/><text class="t" x="95" y="62" text-anchor="middle">VS Code</text><text class="s" x="95" y="80" text-anchor="middle">BRIDGE extension</text>
 <rect class="box" x="235" y="30" width="170" height="70" rx="18"/><text class="t" x="320" y="62" text-anchor="middle">Chrome</text><text class="s" x="320" y="80" text-anchor="middle">BRIDGE companion</text>
 <rect class="box" x="460" y="30" width="170" height="70" rx="18"/><text class="t" x="545" y="62" text-anchor="middle">Claude · ChatGPT · Gemini</text><text class="s" x="545" y="80" text-anchor="middle">your signed-in session</text>
 <path class="flow" d="M184 65H231"/><path class="flow" d="M409 65H456"/>
 <text class="s" x="207" y="130" text-anchor="middle">Local only</text>
-<text class="s" x="207" y="146" text-anchor="middle">127.0.0.1:43127</text>
+<text class="s" x="207" y="146" text-anchor="middle">on your computer</text>
 <text class="s" x="432" y="130" text-anchor="middle">Your browser session</text>
 <text class="s" x="432" y="146" text-anchor="middle">to the provider</text>
 <text class="s" x="320" y="192" text-anchor="middle">BRIDGE has no server of its own in this path.</text>
@@ -109,7 +109,7 @@ footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--mut
 <p>BRIDGE is a VS Code extension and a Chrome (Manifest V3) companion extension. Together they let you use Claude, ChatGPT and Google Gemini from VS Code, using accounts you are already signed in to in Chrome. No API keys are needed.</p>
 <div class="facts">
 <div class="fact"><b>No BRIDGE backend</b><span>BRIDGE does not run its own server to process your conversations.</span></div>
-<div class="fact"><b>Local connection</b><span>VS Code and Chrome talk on your computer at <code>127.0.0.1:43127</code>.</span></div>
+<div class="fact"><b>Local connection</b><span>VS Code and Chrome talk to each other directly on your computer.</span></div>
 <div class="fact"><b>Providers process AI</b><span>Your content goes to the provider you choose, under its own policies.</span></div>
 </div>
 </section>
@@ -166,7 +166,7 @@ footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--mut
 </section>
 
 <section id="local"><h2>Local communication</h2>
-<p>The two extensions connect through a WebSocket on the loopback address <code>127.0.0.1</code>, port <code>43127</code>. Loopback traffic stays on your computer and is not sent over the internet by BRIDGE.</p>
+<p>The two extensions connect through a WebSocket on your own computer (the local loopback interface). This traffic stays on your computer and is not sent over the internet by BRIDGE.</p>
 <ul>
 <li>A pairing token links your VS Code and Chrome extensions, so the connection is not open to anything that happens to reach the port.</li>
 </ul>
@@ -175,7 +175,7 @@ footer{background:var(--alt);padding:28px 22px;text-align:center;color:var(--mut
 <section id="permissions"><h2>Chrome permissions</h2>
 <p>The Chrome extension asks for the following, and uses each one only for BRIDGE's own features.</p>
 <ul>
-<li><b>Site access.</b> Claude.ai, ChatGPT (chatgpt.com and chat.openai.com), Gemini, and <code>127.0.0.1:43127</code> for the local connection. Nothing else.</li>
+<li><b>Site access.</b> Claude.ai, ChatGPT (chatgpt.com and chat.openai.com), Gemini, and your own computer (localhost) for the local connection. Nothing else.</li>
 <li><b>tabs.</b> To find your open provider tabs and read their web addresses, so BRIDGE knows which provider a tab is and whether you are signed in.</li>
 <li><b>scripting.</b> To run BRIDGE's scripts on those provider pages.</li>
 <li><b>storage.</b> To keep the extension's own settings, and to hold copied text temporarily for the save prompt.</li>
